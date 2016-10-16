@@ -2,12 +2,12 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         uglify: {
-            options: {
-                compress: {
-                    drop_console: true
-                }
-            },
-            deploy: {
+            prod: {
+                options: {
+                    compress: {
+                        drop_console: true
+                    }
+                },
                 files: {
                     'deploy/main.min.js': ['js/testFile1.js','js/testFile2.js']
                 }
@@ -17,5 +17,7 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
-    grunt.registerTask('default', ['uglify:deploy']);
+
+
+    grunt.registerTask('prod', ['uglify:prod']);
 };
