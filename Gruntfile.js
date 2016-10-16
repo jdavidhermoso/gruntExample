@@ -37,6 +37,9 @@ module.exports = function (grunt) {
                 config: ".jscsrc",
                 fix: true
             }
+        },
+        jshint: {
+            beforeconcat: ['js/*.js']
         }
     });
 
@@ -45,8 +48,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks("grunt-jscs");
+    grunt.loadNpmTasks('grunt-contrib-jshint');
 
-    grunt.registerTask('default', ['jscs','sass','watch']);
+    grunt.registerTask('default', ['jscs','jshint','sass','watch']);
     grunt.registerTask('checkCode', ['jscs']);
     grunt.registerTask('prod', ['jscs','uglify:prod','sass','cssmin']);
 };
