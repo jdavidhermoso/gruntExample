@@ -31,13 +31,22 @@ module.exports = function (grunt) {
             files: ['sass/*'],
             tasks: ['sass','cssmin']
         },
+        jscs: {
+            src: "js/*.js",
+            options: {
+                config: ".jscsrc",
+                fix: true
+            }
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks("grunt-jscs");
 
-    grunt.registerTask('default', ['sass','watch']);
-    grunt.registerTask('prod', ['uglify:prod','sass','cssmin']);
+    grunt.registerTask('default', ['jscs','sass','watch']);
+    grunt.registerTask('checkCode', ['jscs']);
+    grunt.registerTask('prod', ['jscs','uglify:prod','sass','cssmin']);
 };
