@@ -19,12 +19,20 @@ module.exports = function (grunt) {
                     'deploy/main.css': 'sass/main.scss'
                 }
             }
+        },
+        cssmin: {
+            target: {
+                files: {
+                    'deploy/main.min.css': ['deploy/main.css']
+                }
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     grunt.registerTask('default', ['sass']);
-    grunt.registerTask('prod', ['uglify:prod','sass']);
+    grunt.registerTask('prod', ['uglify:prod','sass','cssmin']);
 };
