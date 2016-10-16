@@ -29,7 +29,7 @@ module.exports = function (grunt) {
         },
         watch: {
             files: ['sass/*'],
-            tasks: ['sass','cssmin']
+            tasks: ['sass']
         },
         jscs: {
             src: "js/*.js",
@@ -51,6 +51,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
 
     grunt.registerTask('default', ['jscs','jshint','sass','watch']);
-    grunt.registerTask('checkCode', ['jscs']);
-    grunt.registerTask('prod', ['jscs','uglify:prod','sass','cssmin']);
+    grunt.registerTask('checkCode', ['jscs','jshint']);
+    grunt.registerTask('prod', ['jscs','jshint','uglify:prod','sass','cssmin']);
 };
