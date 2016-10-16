@@ -6,7 +6,7 @@ module.exports = function(grunt) {
             },
             deploy: {
                 files: {
-                    'deploy/main.min.js': ['js/testFile1.js']
+                    'deploy/main.min.js': ['js/testFile1.js','js/testFile2.js']
                 }
             }
         }
