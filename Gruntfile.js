@@ -3,6 +3,9 @@ module.exports = function(grunt) {
     grunt.initConfig({
         uglify: {
             options: {
+                compress: {
+                    drop_console: true
+                }
             },
             deploy: {
                 files: {
