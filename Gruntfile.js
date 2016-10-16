@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     grunt.initConfig({
         uglify: {
@@ -9,15 +9,22 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    'deploy/main.min.js': ['js/testFile1.js','js/testFile2.js']
+                    'deploy/main.min.js': ['js/testFile1.js', 'js/testFile2.js']
+                }
+            }
+        },
+        sass: {
+            dist: {
+                files: {
+                    'deploy/main.css': 'sass/main.scss'
                 }
             }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
-
-
-    grunt.registerTask('prod', ['uglify:prod']);
+    grunt.registerTask('default', ['sass']);
+    grunt.registerTask('prod', ['uglify:prod','sass']);
 };
